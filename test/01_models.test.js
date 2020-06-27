@@ -36,7 +36,7 @@ describe('Models', function() {
       return Student.truncate({ cascade: true });
     });
 
-    describe.only('attributes definition', () => {
+    describe('attributes definition', () => {
       it('includes `firstName`, `lastName`, and `email` fields', () => {
         return student.save().then(savedStudent => {
           expect(savedStudent.firstName).to.equal('Peter');
@@ -102,7 +102,7 @@ describe('Models', function() {
         });
       });
 
-      xit('capitalizes the first letter of the first and last name before save to the DB', () => {
+      it('capitalizes the first letter of the first and last name before save to the DB', () => {
         return newStudent.save().then(savedStudent => {
           expect(savedStudent.firstName).to.equal('Charles');
           expect(savedStudent.lastName).to.equal('Xavier');
@@ -133,14 +133,14 @@ describe('Models', function() {
     });
 
     describe('attributes definition', () => {
-      xit('includes `subject` and `grade` fields', () => {
+      it('includes `subject` and `grade` fields', () => {
         return test.save().then(savedTest => {
           expect(savedTest.subject).to.equal('Tree-climbing');
           expect(savedTest.grade).to.equal(79);
         });
       });
 
-      xit('requires `subject`', () => {
+      it('requires `subject`', () => {
         test.subject = null;
         return test.validate().then(
           () => {
@@ -150,7 +150,7 @@ describe('Models', function() {
         );
       });
 
-      xit('requires `grade`', () => {
+      it('requires `grade`', () => {
         test.grade = null;
         return test.validate().then(
           () => {
@@ -163,7 +163,7 @@ describe('Models', function() {
     });
 
     describe('associations', () => {
-      xit('belongs to a student', () => {
+      it.only('belongs to a student', () => {
         const newStudent = Student.create({
           firstName: 'Pepper',
           lastName: 'Potts',
